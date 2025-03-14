@@ -9,12 +9,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+os.environ["OPENAI_API_BASE"] = os.getenv("OPENAI_API_BASE")
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class Agent:
     def __init__(self):
-        self.model_name = "gpt-4o-mini"
+        self.model_name = os.getenv("OPENAI_API_MODEL")
         logging.info(f"使用模型: {self.model_name}")
         
         self.chat_model = ChatOpenAI(model=self.model_name)

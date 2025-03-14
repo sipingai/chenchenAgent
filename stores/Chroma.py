@@ -9,7 +9,7 @@ class Store:
         self.collection_name = collection_name
 
     def create_vector_store(self):
-        embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+        embeddings = OpenAIEmbeddings()
 
         if not os.path.exists(self.persist_directory):
             os.makedirs(self.persist_directory)

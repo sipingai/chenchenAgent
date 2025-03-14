@@ -1,3 +1,4 @@
+import os
 import logging
 from langchain.memory import ConversationTokenBufferMemory
 from langchain_community.chat_message_histories import RedisChatMessageHistory
@@ -12,7 +13,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class Memory:
-    def __init__(self, memory_key="chat_history", model="gpt-4o-mini"):
+    def __init__(self, memory_key="chat_history", model=os.getenv("OPENAI_API_MODEL")):
         self.memory_key = memory_key
         self.memory = []
         self.chat_model = ChatOpenAI(model=model)
